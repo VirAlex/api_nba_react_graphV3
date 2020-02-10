@@ -667,10 +667,17 @@ export class MatchDetail extends Component {
           <UpdatePourcentageFieldsH gameId={gameId} />
         </div>
         <div className="col radial-chart d-flex justify-content-center">
-        <UpdatePourcentage3pV gameId={gameId} />
-        <UpdatePourcentage3pH gameId={gameId} />
+          <UpdatePourcentage3pV gameId={gameId} />
+          <UpdatePourcentage3pH gameId={gameId} />
         </div>
-        <TakeMatch gameId={gameId} />
+        <div className="row">
+          <div className="col">
+            <TakeMatch gameId={gameId} />
+          </div>
+          <div className="col">
+            <h1>Coucou</h1>
+          </div>
+        </div>
       </div>
     );
   }
