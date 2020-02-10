@@ -315,11 +315,11 @@ function TakeMatch({gameId: gameId}) {
             <div>
               <FaMedal style={{ color: "orange", fontSize: "30px" }} />
               Meilleurs marqueurs pour{" "}
-              <img src={URLV} alt="" style={{ width: 55 }} /> {firstName}{" "}
+              <img src={URLV} alt="" style={{ width: 60 }} /> {firstName}{" "}
               {lastName} avec {value}pts
             </div>
             <div className="d-flex justify-content-end align-items-center">
-              <img className="Ttfl" src={TTFL} alt="" style={{ width: 55 }} />
+              <img className="Ttfl" src={TTFL} alt="" style={{ width: 50 }} />
               <div className="ml-1" style={{ textAlign: "center" }}>
                 {sortTtflByPointsV()}Pts
               </div>
@@ -329,13 +329,13 @@ function TakeMatch({gameId: gameId}) {
             <div>
               <FaMedal style={{ color: "orange", fontSize: "30px" }} />
               Meilleurs marqueurs pour{" "}
-              <img src={URLH} alt="" style={{ width: 55 }} />
+              <img src={URLH} alt="" style={{ width: 60 }} />
               {data.match.stats.hTeam.leaders.points.players[0].firstName}{" "}
               {data.match.stats.hTeam.leaders.points.players[0].lastName} avec{" "}
               {data.match.stats.hTeam.leaders.points.value} pts
             </div>
             <div className="d-flex justify-content-end align-items-center">
-              <img className="Ttfl" src={TTFL} alt="" style={{ width: 55 }} />
+              <img className="Ttfl" src={TTFL} alt="" style={{ width: 50 }} />
               <div className="ml-1" style={{ textAlign: "center" }}>
                 {sortTtflByPointsH()}Pts
               </div>
@@ -344,10 +344,10 @@ function TakeMatch({gameId: gameId}) {
           <li className="list-group-item mt-1">
             <GiPodiumWinner style={{ color: "orange", fontSize: "30px" }} />
             Meilleurs rebondeur pour{" "}
-            <img src={URLV} alt="" style={{ width: 55 }} /> {firstNameR}{" "}
+            <img src={URLV} alt="" style={{ width: 60 }} /> {firstNameR}{" "}
             {lastNameR} avec {valueR} rbds
             <div className="d-flex justify-content-end align-items-center">
-              <img className="Ttfl" src={TTFL} alt="" style={{ width: 55 }} />
+              <img className="Ttfl" src={TTFL} alt="" style={{ width: 50 }} />
               <div className="ml-1" style={{ textAlign: "center" }}>
                 {sortTtflByReboundsV()}Pts
               </div>
@@ -356,12 +356,12 @@ function TakeMatch({gameId: gameId}) {
           <li className="list-group-item mt-1">
             <GiPodiumWinner style={{ color: "orange", fontSize: "30px" }} />
             Meilleurs rebondeur pour{" "}
-            <img src={URLH} alt="" style={{ width: 55 }} />
+            <img src={URLH} alt="" style={{ width: 60 }} />
             {data.match.stats.hTeam.leaders.rebounds.players[0].firstName}{" "}
             {data.match.stats.hTeam.leaders.rebounds.players[0].lastName} avec{" "}
             {data.match.stats.hTeam.leaders.rebounds.value} rbds
             <div className="d-flex justify-content-end align-items-center">
-              <img className="Ttfl" src={TTFL} alt="" style={{ width: 55 }} />
+              <img className="Ttfl" src={TTFL} alt="" style={{ width: 50 }} />
               <div className="ml-1" style={{ textAlign: "center" }}>
                 {sortTtflByReboundsH()}Pts
               </div>
@@ -370,10 +370,10 @@ function TakeMatch({gameId: gameId}) {
           <li className="list-group-item mt-1">
             <FaUserFriends style={{ color: "orange", fontSize: "30px" }} />
             Meilleurs passeur pour{" "}
-            <img src={URLV} alt="" style={{ width: 55 }} /> {firstNameP}{" "}
+            <img src={URLV} alt="" style={{ width: 60 }} /> {firstNameP}{" "}
             {lastNameP} avec {valueP} asst
             <div className="d-flex justify-content-end align-items-center">
-              <img className="Ttfl" src={TTFL} alt="" style={{ width: 55 }} />
+              <img className="Ttfl" src={TTFL} alt="" style={{ width: 50 }} />
               <div className="ml-1" style={{ textAlign: "center" }}>
                 {sortTtflByAssistsV()}Pts
               </div>
@@ -382,12 +382,12 @@ function TakeMatch({gameId: gameId}) {
           <li className="list-group-item mt-1">
             <FaUserFriends style={{ color: "orange", fontSize: "30px" }} />
             Meilleurs passeur pour{" "}
-            <img src={URLH} alt="" style={{ width: 55 }} />{" "}
+            <img src={URLH} alt="" style={{ width: 60 }} />{" "}
             {data.match.stats.hTeam.leaders.assists.players[0].firstName}{" "}
             {data.match.stats.hTeam.leaders.assists.players[0].lastName} avec{" "}
             {data.match.stats.hTeam.leaders.assists.value} asst
             <div className="d-flex justify-content-end align-items-center">
-              <img className="Ttfl" src={TTFL} alt="" style={{ width: 55 }} />
+              <img className="Ttfl" src={TTFL} alt="" style={{ width: 50 }} />
               <div className="ml-1" style={{ textAlign: "center" }}>
                 {sortTtflByAssistsH()}Pts
               </div>
@@ -418,10 +418,10 @@ function TakeMatch({gameId: gameId}) {
             <li className="list-group-item mt-1">
               <FaMedal style={{ color: "orange", fontSize: "30px" }} />
               Meilleurs marqueurs pour{" "}
-              <img src={URLV} alt="" style={{ width: 55 }} /> {firstName}{" "}
+              <img src={URLV} alt="" style={{ width: 60 }} /> {firstName}{" "}
               {lastName} avec {value}
               <div className="d-flex justify-content-end align-items-center">
-                <img className="Ttfl" src={TTFL} alt="" style={{ width: 55 }} />
+                <img className="Ttfl" src={TTFL} alt="" style={{ width: 50 }} />
                 <div className="ml-1" style={{ textAlign: "center" }}>
                   {sortTtflByPointsV()}Pts
                 </div>
@@ -430,12 +430,12 @@ function TakeMatch({gameId: gameId}) {
             <li className="list-group-item mt-1">
               <FaMedal style={{ color: "orange", fontSize: "30px" }} />
               Meilleurs marqueurs pour{" "}
-              <img src={URLH} alt="" style={{ width: 55 }} />
+              <img src={URLH} alt="" style={{ width: 60 }} />
               {data.match.stats.hTeam.leaders.points.players[0].firstName}{" "}
               {data.match.stats.hTeam.leaders.points.players[0].lastName} avec{" "}
               {data.match.stats.hTeam.leaders.points.value} pts
               <div className="d-flex justify-content-end align-items-center">
-                <img className="Ttfl" src={TTFL} alt="" style={{ width: 55 }} />
+                <img className="Ttfl" src={TTFL} alt="" style={{ width: 50 }} />
                 <div className="ml-1" style={{ textAlign: "center" }}>
                   {sortTtflByPointsH()}Pts
                 </div>
@@ -444,10 +444,10 @@ function TakeMatch({gameId: gameId}) {
             <li className="list-group-item mt-1">
               <GiPodiumWinner style={{ color: "orange", fontSize: "30px" }} />
               Meilleurs rebondeur pour{" "}
-              <img src={URLV} alt="" style={{ width: 55 }} /> {firstNameR}{" "}
+              <img src={URLV} alt="" style={{ width: 60 }} /> {firstNameR}{" "}
               {lastNameR} avec {valueR} rbds
               <div className="d-flex justify-content-end align-items-center">
-                <img className="Ttfl" src={TTFL} alt="" style={{ width: 55 }} />
+                <img className="Ttfl" src={TTFL} alt="" style={{ width: 50 }} />
                 <div className="ml-1" style={{ textAlign: "center" }}>
                   {sortTtflByReboundsV()}Pts
                 </div>
@@ -456,12 +456,12 @@ function TakeMatch({gameId: gameId}) {
             <li className="list-group-item mt-1">
               <GiPodiumWinner style={{ color: "orange", fontSize: "30px" }} />
               Meilleurs rebondeur pour{" "}
-              <img src={URLH} alt="" style={{ width: 55 }} />{" "}
+              <img src={URLH} alt="" style={{ width: 60 }} />{" "}
               {data.match.stats.hTeam.leaders.rebounds.players[0].firstName}{" "}
               {data.match.stats.hTeam.leaders.rebounds.players[0].lastName} avec{" "}
               {data.match.stats.hTeam.leaders.rebounds.value} rbds
               <div className="d-flex justify-content-end align-items-center">
-                <img className="Ttfl" src={TTFL} alt="" style={{ width: 55 }} />
+                <img className="Ttfl" src={TTFL} alt="" style={{ width: 50 }} />
                 <div className="ml-1" style={{ textAlign: "center" }}>
                   {sortTtflByReboundsH()}Pts
                 </div>
@@ -470,10 +470,10 @@ function TakeMatch({gameId: gameId}) {
             <li className="list-group-item mt-1">
               <FaUserFriends style={{ color: "orange", fontSize: "30px" }} />
               Meilleurs passeur pour{" "}
-              <img src={URLV} alt="" style={{ width: 55 }} /> {firstNameP}{" "}
+              <img src={URLV} alt="" style={{ width: 60 }} /> {firstNameP}{" "}
               {lastNameP} avec {valueP} asst
               <div className="d-flex justify-content-end align-items-center">
-                <img className="Ttfl" src={TTFL} alt="" style={{ width: 55 }} />
+                <img className="Ttfl" src={TTFL} alt="" style={{ width: 50 }} />
                 <div className="ml-1" style={{ textAlign: "center" }}>
                   {sortTtflByAssistsV()}Pts
                 </div>
@@ -482,19 +482,19 @@ function TakeMatch({gameId: gameId}) {
             <li className="list-group-item mt-1">
               <FaUserFriends style={{ color: "orange", fontSize: "30px" }} />
               Meilleurs passeur pour{" "}
-              <img src={URLH} alt="" style={{ width: 55 }} />{" "}
+              <img src={URLH} alt="" style={{ width: 60 }} />{" "}
               {data.match.stats.hTeam.leaders.assists.players[0].firstName}{" "}
               {data.match.stats.hTeam.leaders.assists.players[0].lastName} avec{" "}
               {data.match.stats.hTeam.leaders.assists.value} asst
               <div className="d-flex justify-content-end align-items-center">
-                <img className="Ttfl" src={TTFL} alt="" style={{ width: 55 }} />
+                <img className="Ttfl" src={TTFL} alt="" style={{ width: 50 }} />
                 <div className="ml-1" style={{ textAlign: "center" }}>
                   {sortTtflByAssistsH()}pts
                 </div>
               </div>
             </li>
           </ul>
-          <Link to="/" className="btn btn-primary mt-3 mb-3">
+          <Link to="/" className="btn btn-primary btn-lg mt-3 mb-3">
             Back
           </Link>
         </div>
