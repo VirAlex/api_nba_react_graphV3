@@ -7,6 +7,7 @@ import { FaMedal } from "react-icons/fa";
 import { GiPodiumWinner } from "react-icons/gi";
 import { FaUserFriends } from "react-icons/fa";
 import Chart from "react-apexcharts";
+import TTFL from '../ttfl.png'
 
 const MATCH_DETAIL_QUERY = gql`
   query MatchQuery($gameId: String!) {
@@ -65,6 +66,29 @@ const MATCH_DETAIL_QUERY = gql`
               }
             }
           }
+        }
+        activePlayers{
+    firstName
+    lastName
+    points
+    min
+    min
+    fgm
+    fgp
+    fga
+    ftm
+    fta
+    ftp
+    tpm
+    tpa
+    tpp
+    totReb
+    assists
+    pFouls
+    steals
+    turnovers
+    blocks
+    turnovers
         }
         hTeam {
           biggestLead
@@ -138,6 +162,136 @@ function TakeMatch({gameId: gameId}) {
   const lastNameP = data.match.stats.vTeam.leaders.assists.players[0].lastName;
   const URLV = `https://www.nba.com/.element/img/1.0/teamsites/logos/teamlogos_500x500/${triCode.toLowerCase()}.png`;
   const URLH = `https://www.nba.com/.element/img/1.0/teamsites/logos/teamlogos_500x500/${data.match.basicGameData.hTeam.triCode.toLowerCase()}.png`;
+  // calculs TTFL
+  const arrrayTtfl = data.match.stats.activePlayers;
+  let firstByPoint = arrrayTtfl.find(o => o.lastName === lastName);
+  let firstByRebound = arrrayTtfl.find(o => o.lastName === lastNameR);
+  let firstByAssists = arrrayTtfl.find(o => o.lastName === lastNameP);
+  let firstByPointH = arrrayTtfl.find(
+    o =>
+      o.lastName === data.match.stats.hTeam.leaders.points.players[0].lastName
+  );
+  let firstByReboundH = arrrayTtfl.find(
+    o =>
+      o.lastName === data.match.stats.hTeam.leaders.rebounds.players[0].lastName
+  );
+  let firstByAssistsH = arrrayTtfl.find(
+    o =>
+      o.lastName ===
+      data.match.stats.hTeam.leaders.assists.players[0].lastName
+  );
+
+
+  const sortTtflByPointsV= () => {
+  let arrayByPointsBonus =
+    parseInt(firstByPoint.points) +
+    parseInt(firstByPoint.totReb) +
+    parseInt(firstByPoint.assists) +
+    parseInt(firstByPoint.steals) +
+    parseInt(firstByPoint.blocks) +
+    parseInt(firstByPoint.fgm) +
+    parseInt(firstByPoint.tpm) +
+    parseInt(firstByPoint.ftm);
+  let arrayByPointsMalus =
+    parseInt(firstByPoint.turnovers) +
+    parseInt(firstByPoint.fga - firstByPoint.fgm) +
+    parseInt(firstByPoint.tpa - firstByPoint.tpm) +
+    parseInt(firstByPoint.fta - firstByPoint.ftm)
+    let ttflPointsPoints = arrayByPointsBonus - arrayByPointsMalus;
+    return ttflPointsPoints
+  };
+  const sortTtflByReboundsV = () => {
+  let arrayByPointsBonus =
+    parseInt(firstByRebound.points) +
+    parseInt(firstByRebound.totReb) +
+    parseInt(firstByRebound.assists) +
+    parseInt(firstByRebound.steals) +
+    parseInt(firstByRebound.blocks) +
+    parseInt(firstByRebound.fgm) +
+    parseInt(firstByRebound.tpm) +
+    parseInt(firstByRebound.ftm);
+  let arrayByPointsMalus =
+    parseInt(firstByRebound.turnovers) +
+    parseInt(firstByRebound.fga - firstByRebound.fgm) +
+    parseInt(firstByRebound.tpa - firstByRebound.tpm) +
+    parseInt(firstByRebound.fta - firstByRebound.ftm);
+  let ttflPointsPoints = arrayByPointsBonus - arrayByPointsMalus;
+  return ttflPointsPoints;
+  };
+  const sortTtflByAssistsV = () => {
+    let arrayByPointsBonus =
+      parseInt(firstByAssists.points) +
+      parseInt(firstByAssists.totReb) +
+      parseInt(firstByAssists.assists) +
+      parseInt(firstByAssists.steals) +
+      parseInt(firstByAssists.blocks) +
+      parseInt(firstByAssists.fgm) +
+      parseInt(firstByAssists.tpm) +
+      parseInt(firstByAssists.ftm);
+    let arrayByPointsMalus =
+      parseInt(firstByAssists.turnovers) +
+      parseInt(firstByAssists.fga - firstByAssists.fgm) +
+      parseInt(firstByAssists.tpa - firstByAssists.tpm) +
+      parseInt(firstByAssists.fta - firstByAssists.ftm);
+    let ttflPointsPoints = arrayByPointsBonus - arrayByPointsMalus;
+    return ttflPointsPoints;
+  };
+  const sortTtflByPointsH = () => {
+    let arrayByPointsBonus =
+      parseInt(firstByPointH.points) +
+      parseInt(firstByPointH.totReb) +
+      parseInt(firstByPointH.assists) +
+      parseInt(firstByPointH.steals) +
+      parseInt(firstByPointH.blocks) +
+      parseInt(firstByPointH.fgm) +
+      parseInt(firstByPointH.tpm) +
+      parseInt(firstByPointH.ftm);
+    let arrayByPointsMalus =
+      parseInt(firstByPointH.turnovers) +
+      parseInt(firstByPointH.fga - firstByPointH.fgm) +
+      parseInt(firstByPointH.tpa - firstByPointH.tpm) +
+      parseInt(firstByPointH.fta - firstByPointH.ftm);
+    let ttflPointsPoints = arrayByPointsBonus - arrayByPointsMalus;
+    return ttflPointsPoints;
+  };
+  const sortTtflByReboundsH = () => {
+    let arrayByPointsBonus =
+      parseInt(firstByReboundH.points) +
+      parseInt(firstByReboundH.totReb) +
+      parseInt(firstByReboundH.assists) +
+      parseInt(firstByReboundH.steals) +
+      parseInt(firstByReboundH.blocks) +
+      parseInt(firstByReboundH.fgm) +
+      parseInt(firstByReboundH.tpm) +
+      parseInt(firstByReboundH.ftm);
+    let arrayByPointsMalus =
+      parseInt(firstByReboundH.turnovers) +
+      parseInt(firstByReboundH.fga - firstByReboundH.fgm) +
+      parseInt(firstByReboundH.tpa - firstByReboundH.tpm) +
+      parseInt(firstByReboundH.fta - firstByReboundH.ftm);
+    let ttflPointsPoints = arrayByPointsBonus - arrayByPointsMalus;
+    return ttflPointsPoints;
+  };
+  const sortTtflByAssistsH = () => {
+    let arrayByPointsBonus =
+      parseInt(firstByAssistsH.points) +
+      parseInt(firstByAssistsH.totReb) +
+      parseInt(firstByAssistsH.assists) +
+      parseInt(firstByAssistsH.steals) +
+      parseInt(firstByAssistsH.blocks) +
+      parseInt(firstByAssistsH.fgm) +
+      parseInt(firstByAssistsH.tpm) +
+      parseInt(firstByAssistsH.ftm);
+    let arrayByPointsMalus =
+      parseInt(firstByAssistsH.turnovers) +
+      parseInt(firstByAssistsH.fga - firstByAssistsH.fgm) +
+      parseInt(firstByAssistsH.tpa - firstByAssistsH.tpm) +
+      parseInt(firstByAssistsH.fta - firstByAssistsH.ftm);
+    let ttflPointsPoints = arrayByPointsBonus - arrayByPointsMalus;
+    return ttflPointsPoints;
+  };
+
+
   // console.log(URLV);
 
     // console.log(points);
@@ -158,25 +312,46 @@ function TakeMatch({gameId: gameId}) {
             </h4>
           </div>
           <li className="list-group-item mt-1">
-            <FaMedal style={{ color: "orange", fontSize: "30px" }} />
-            Meilleurs marqueurs pour{" "}
-            <img src={URLV} alt="" style={{ width: 55 }} /> {firstName}{" "}
-            {lastName} avec {value}
-            pts
+            <div>
+              <FaMedal style={{ color: "orange", fontSize: "30px" }} />
+              Meilleurs marqueurs pour{" "}
+              <img src={URLV} alt="" style={{ width: 55 }} /> {firstName}{" "}
+              {lastName} avec {value}pts
+            </div>
+            <div className="d-flex justify-content-end align-items-center">
+              <img className="Ttfl" src={TTFL} alt="" style={{ width: 55 }} />
+              <div className="ml-1" style={{ textAlign: "center" }}>
+                {sortTtflByPointsV()}Pts
+              </div>
+            </div>
           </li>
           <li className="list-group-item mt-1">
-            <FaMedal style={{ color: "orange", fontSize: "30px" }} />
-            Meilleurs marqueurs pour{" "}
-            <img src={URLH} alt="" style={{ width: 55 }} />
-            {data.match.stats.hTeam.leaders.points.players[0].firstName}{" "}
-            {data.match.stats.hTeam.leaders.points.players[0].lastName} avec{" "}
-            {data.match.stats.hTeam.leaders.points.value} pts
+            <div>
+              <FaMedal style={{ color: "orange", fontSize: "30px" }} />
+              Meilleurs marqueurs pour{" "}
+              <img src={URLH} alt="" style={{ width: 55 }} />
+              {data.match.stats.hTeam.leaders.points.players[0].firstName}{" "}
+              {data.match.stats.hTeam.leaders.points.players[0].lastName} avec{" "}
+              {data.match.stats.hTeam.leaders.points.value} pts
+            </div>
+            <div className="d-flex justify-content-end align-items-center">
+              <img className="Ttfl" src={TTFL} alt="" style={{ width: 55 }} />
+              <div className="ml-1" style={{ textAlign: "center" }}>
+                {sortTtflByPointsH()}Pts
+              </div>
+            </div>
           </li>
           <li className="list-group-item mt-1">
             <GiPodiumWinner style={{ color: "orange", fontSize: "30px" }} />
             Meilleurs rebondeur pour{" "}
             <img src={URLV} alt="" style={{ width: 55 }} /> {firstNameR}{" "}
             {lastNameR} avec {valueR} rbds
+            <div className="d-flex justify-content-end align-items-center">
+              <img className="Ttfl" src={TTFL} alt="" style={{ width: 55 }} />
+              <div className="ml-1" style={{ textAlign: "center" }}>
+                {sortTtflByReboundsV()}Pts
+              </div>
+            </div>
           </li>
           <li className="list-group-item mt-1">
             <GiPodiumWinner style={{ color: "orange", fontSize: "30px" }} />
@@ -185,20 +360,38 @@ function TakeMatch({gameId: gameId}) {
             {data.match.stats.hTeam.leaders.rebounds.players[0].firstName}{" "}
             {data.match.stats.hTeam.leaders.rebounds.players[0].lastName} avec{" "}
             {data.match.stats.hTeam.leaders.rebounds.value} rbds
+            <div className="d-flex justify-content-end align-items-center">
+              <img className="Ttfl" src={TTFL} alt="" style={{ width: 55 }} />
+              <div className="ml-1" style={{ textAlign: "center" }}>
+                {sortTtflByReboundsH()}Pts
+              </div>
+            </div>
           </li>
           <li className="list-group-item mt-1">
             <FaUserFriends style={{ color: "orange", fontSize: "30px" }} />
             Meilleurs passeur pour{" "}
             <img src={URLV} alt="" style={{ width: 55 }} /> {firstNameP}{" "}
             {lastNameP} avec {valueP} asst
+            <div className="d-flex justify-content-end align-items-center">
+              <img className="Ttfl" src={TTFL} alt="" style={{ width: 55 }} />
+              <div className="ml-1" style={{ textAlign: "center" }}>
+                {sortTtflByAssistsV()}Pts
+              </div>
+            </div>
           </li>
           <li className="list-group-item mt-1">
             <FaUserFriends style={{ color: "orange", fontSize: "30px" }} />
             Meilleurs passeur pour{" "}
-            <img src={URLH} alt="" style={{ width: 55 }} /> {" "}
+            <img src={URLH} alt="" style={{ width: 55 }} />{" "}
             {data.match.stats.hTeam.leaders.assists.players[0].firstName}{" "}
             {data.match.stats.hTeam.leaders.assists.players[0].lastName} avec{" "}
             {data.match.stats.hTeam.leaders.assists.value} asst
+            <div className="d-flex justify-content-end align-items-center">
+              <img className="Ttfl" src={TTFL} alt="" style={{ width: 55 }} />
+              <div className="ml-1" style={{ textAlign: "center" }}>
+                {sortTtflByAssistsH()}Pts
+              </div>
+            </div>
           </li>
         </ul>
         <Link to="/" className="btn btn-primary mt-3 mb-3">
@@ -225,9 +418,14 @@ function TakeMatch({gameId: gameId}) {
             <li className="list-group-item mt-1">
               <FaMedal style={{ color: "orange", fontSize: "30px" }} />
               Meilleurs marqueurs pour{" "}
-              <img src={URLV} alt="" style={{ width: 55 }} /> {" "}
-              {firstName} {lastName} avec {value}
-              pts
+              <img src={URLV} alt="" style={{ width: 55 }} /> {firstName}{" "}
+              {lastName} avec {value}
+              <div className="d-flex justify-content-end align-items-center">
+                <img className="Ttfl" src={TTFL} alt="" style={{ width: 55 }} />
+                <div className="ml-1" style={{ textAlign: "center" }}>
+                  {sortTtflByPointsV()}Pts
+                </div>
+              </div>
             </li>
             <li className="list-group-item mt-1">
               <FaMedal style={{ color: "orange", fontSize: "30px" }} />
@@ -236,34 +434,64 @@ function TakeMatch({gameId: gameId}) {
               {data.match.stats.hTeam.leaders.points.players[0].firstName}{" "}
               {data.match.stats.hTeam.leaders.points.players[0].lastName} avec{" "}
               {data.match.stats.hTeam.leaders.points.value} pts
+              <div className="d-flex justify-content-end align-items-center">
+                <img className="Ttfl" src={TTFL} alt="" style={{ width: 55 }} />
+                <div className="ml-1" style={{ textAlign: "center" }}>
+                  {sortTtflByPointsH()}Pts
+                </div>
+              </div>
             </li>
             <li className="list-group-item mt-1">
               <GiPodiumWinner style={{ color: "orange", fontSize: "30px" }} />
               Meilleurs rebondeur pour{" "}
-              <img src={URLV} alt="" style={{ width: 55 }} /> {" "}
-              {firstNameR} {lastNameR} avec {valueR} rbds
+              <img src={URLV} alt="" style={{ width: 55 }} /> {firstNameR}{" "}
+              {lastNameR} avec {valueR} rbds
+              <div className="d-flex justify-content-end align-items-center">
+                <img className="Ttfl" src={TTFL} alt="" style={{ width: 55 }} />
+                <div className="ml-1" style={{ textAlign: "center" }}>
+                  {sortTtflByReboundsV()}Pts
+                </div>
+              </div>
             </li>
             <li className="list-group-item mt-1">
               <GiPodiumWinner style={{ color: "orange", fontSize: "30px" }} />
               Meilleurs rebondeur pour{" "}
-              <img src={URLH} alt="" style={{ width: 55 }} /> {" "}
+              <img src={URLH} alt="" style={{ width: 55 }} />{" "}
               {data.match.stats.hTeam.leaders.rebounds.players[0].firstName}{" "}
               {data.match.stats.hTeam.leaders.rebounds.players[0].lastName} avec{" "}
               {data.match.stats.hTeam.leaders.rebounds.value} rbds
+              <div className="d-flex justify-content-end align-items-center">
+                <img className="Ttfl" src={TTFL} alt="" style={{ width: 55 }} />
+                <div className="ml-1" style={{ textAlign: "center" }}>
+                  {sortTtflByReboundsH()}Pts
+                </div>
+              </div>
             </li>
             <li className="list-group-item mt-1">
               <FaUserFriends style={{ color: "orange", fontSize: "30px" }} />
               Meilleurs passeur pour{" "}
               <img src={URLV} alt="" style={{ width: 55 }} /> {firstNameP}{" "}
               {lastNameP} avec {valueP} asst
+              <div className="d-flex justify-content-end align-items-center">
+                <img className="Ttfl" src={TTFL} alt="" style={{ width: 55 }} />
+                <div className="ml-1" style={{ textAlign: "center" }}>
+                  {sortTtflByAssistsV()}Pts
+                </div>
+              </div>
             </li>
             <li className="list-group-item mt-1">
               <FaUserFriends style={{ color: "orange", fontSize: "30px" }} />
               Meilleurs passeur pour{" "}
-              <img src={URLH} alt="" style={{ width: 55 }} /> {" "}
+              <img src={URLH} alt="" style={{ width: 55 }} />{" "}
               {data.match.stats.hTeam.leaders.assists.players[0].firstName}{" "}
               {data.match.stats.hTeam.leaders.assists.players[0].lastName} avec{" "}
               {data.match.stats.hTeam.leaders.assists.value} asst
+              <div className="d-flex justify-content-end align-items-center">
+                <img className="Ttfl" src={TTFL} alt="" style={{ width: 55 }} />
+                <div className="ml-1" style={{ textAlign: "center" }}>
+                  {sortTtflByAssistsH()}pts
+                </div>
+              </div>
             </li>
           </ul>
           <Link to="/" className="btn btn-primary mt-3 mb-3">
@@ -670,15 +898,10 @@ export class MatchDetail extends Component {
           <UpdatePourcentage3pV gameId={gameId} />
           <UpdatePourcentage3pH gameId={gameId} />
         </div>
-        <div className="row">
-          <div className="col">
+        <div>
             <TakeMatch gameId={gameId} />
           </div>
-          <div className="col">
-            <h1>Coucou</h1>
-          </div>
         </div>
-      </div>
     );
   }
 }

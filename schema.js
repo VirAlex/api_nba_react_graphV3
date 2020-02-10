@@ -84,7 +84,34 @@ const statType = new GraphQLObjectType({
   fields: () => ({
     vTeam: { type: vTeamstatType },
     hTeam: { type: hTeamstatType },
-    // activePlayers: { type: activePlayersType }
+    activePlayers: { type: new GraphQLList(activePlayersType) }
+  })
+});
+
+const activePlayersType = new GraphQLObjectType({
+  name: "activePlayersArray",
+  fields: () => ({
+    firstName: { type: GraphQLString },
+    lastName: { type: GraphQLString },
+    points: { type: GraphQLString },
+    min: { type: GraphQLString },
+    min: { type: GraphQLString },
+    fgm: { type: GraphQLString },
+    fgp: { type: GraphQLString },
+    fga: { type: GraphQLString },
+    ftm: { type: GraphQLString },
+    fta: { type: GraphQLString },
+    ftp: { type: GraphQLString },
+    tpm: { type: GraphQLString },
+    tpa: { type: GraphQLString },
+    tpp: { type: GraphQLString },
+    totReb: { type: GraphQLString },
+    assists: { type: GraphQLString },
+    pFouls: { type: GraphQLString },
+    steals: { type: GraphQLString },
+    turnovers: { type: GraphQLString },
+    blocks: { type: GraphQLString },
+    turnovers: { type: GraphQLString }
   })
 });
 
