@@ -1,0 +1,8 @@
+@media (max-width: 370px) {
+  h1 {
+    font-size: 30px !important;
+  }
+  .graph{
+    margin-right: -20px !important;
+  }
+}
