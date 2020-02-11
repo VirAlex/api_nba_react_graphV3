@@ -177,8 +177,6 @@ const LeaderPlayerType = new GraphQLObjectType({
   })
 });
 
-
-
 const totalsType = new GraphQLObjectType({
   name: "totals",
   fields: () => ({

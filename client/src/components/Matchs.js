@@ -5,6 +5,7 @@ import * as compose from "lodash.flowright";
 import LaunchMatch from './LaunchMatchs';
 import Moment from 'react-moment';
 
+
 export class Matchs extends Component {
          constructor(props) {
            super(props);
@@ -41,7 +42,7 @@ export class Matchs extends Component {
         }
 
          handleClick(event) {
-           console.log(event.currentTarget.value);
+
           //  console.log("date = " + date);
           //  this.setState({
           //    dueDate: date
